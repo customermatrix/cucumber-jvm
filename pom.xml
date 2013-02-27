@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>info.cukes</groupId>
   <artifactId>cucumber-jvm</artifactId>
-  <version>1.1.5</version>
+  <version>1.1.5-PES-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Cucumber-JVM</name>
   <url>http://cukes.info/</url>
@@ -447,23 +447,10 @@
 
   <modules>
     <module>core</module>
-    <module>picocontainer</module>
-    <module>clojure</module>
     <module>junit</module>
-    <module>jruby</module>
-    <module>jython</module>
     <module>spring</module>
-    <module>guice</module>
-    <module>weld</module>
     <module>groovy</module>
-    <module>ioke</module>
-    <module>rhino</module>
     <module>java</module>
-    <module>openejb</module>
-    <module>scala</module>
-    <module>scala/scala_previous</module>
-    <module>needle</module>
-    <module>testng</module>
   </modules>
 
   <profiles>
