@@ -18,7 +18,9 @@ import gherkin.formatter.model.Step;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CucumberFeature {
     private final String uri;
@@ -28,6 +30,7 @@ public class CucumberFeature {
     private final List<CucumberTagStatement> cucumberTagStatements = new ArrayList<CucumberTagStatement>();
     private I18n i18n;
     private CucumberScenarioOutline currentScenarioOutline;
+    private Set<String> scenarioCache = new HashSet<String>();
 
     public static List<CucumberFeature> load(ResourceLoader resourceLoader, List<String> featurePaths, final List<Object> filters) {
         final List<CucumberFeature> cucumberFeatures = new ArrayList<CucumberFeature>();
@@ -63,9 +66,17 @@ public class CucumberFeature {
     }
 
     public void scenario(Scenario scenario) {
+        String id = scenario.getId();
+        String scenarioName = id.split(";")[0];
+
+        if (scenarioCache.contains(scenarioName)) {
+          cucumberBackground = null;
+        }
+
         CucumberTagStatement cucumberTagStatement = new CucumberScenario(this, cucumberBackground, scenario);
         currentStepContainer = cucumberTagStatement;
         cucumberTagStatements.add(cucumberTagStatement);
+        scenarioCache.add(scenarioName);
     }
 
     public void scenarioOutline(ScenarioOutline scenarioOutline) {
