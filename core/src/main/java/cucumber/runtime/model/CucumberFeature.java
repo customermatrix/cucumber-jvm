@@ -66,11 +66,14 @@ public class CucumberFeature {
     }
 
     public void scenario(Scenario scenario) {
-        String id = scenario.getId();
-        String scenarioName = id.split(";")[0];
+        String scenarioName = scenario.getId();
+
+        if (scenarioName.contains(";")) {
+            scenarioName = scenarioName.split(";")[0];
+        }
 
         if (scenarioCache.contains(scenarioName)) {
-          cucumberBackground = null;
+            cucumberBackground = null;
         }
 
         CucumberTagStatement cucumberTagStatement = new CucumberScenario(this, cucumberBackground, scenario);
@@ -80,10 +83,20 @@ public class CucumberFeature {
     }
 
     public void scenarioOutline(ScenarioOutline scenarioOutline) {
+        String scenarioName = scenario.getId();
+
+        if (scenarioName.contains(";")) {
+            scenarioName = scenarioName.split(";")[0];
+        }
+
+        if (scenarioCache.contains(scenarioName)) {
+            cucumberBackground = null;
+        }
         CucumberScenarioOutline cucumberScenarioOutline = new CucumberScenarioOutline(this, cucumberBackground, scenarioOutline);
         currentScenarioOutline = cucumberScenarioOutline;
         currentStepContainer = cucumberScenarioOutline;
         cucumberTagStatements.add(cucumberScenarioOutline);
+        scenarioCache.add(scenarioName);
     }
 
     public void examples(Examples examples) {
