@@ -75,6 +75,19 @@
     <connection>scm:git:ssh://git@github.com/polyspot/cucumber-jvm.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/polyspot/cucumber-jvm.git</developerConnection>
   </scm>
+  <distributionManagement>
+    <repository>
+      <id>repository-polyspot</id>
+      <name>polyspot releases repository</name>
+      <url>https://dev.polyspot.com/nexus/content/repositories/releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>repository-polyspot</id>
+      <name>polyspot snapshots repository</name>
+      <url>https://dev.polyspot.com/nexus/content/repositories/snapshots</url>
+      <uniqueVersion>false</uniqueVersion>
+    </snapshotRepository>
+  </distributionManagement>
 
   <dependencyManagement>
     <dependencies>
