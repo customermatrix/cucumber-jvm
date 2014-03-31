@@ -15,6 +15,7 @@ import gherkin.formatter.model.Match;
 import gherkin.formatter.model.Result;
 import gherkin.formatter.model.Step;
 import gherkin.formatter.model.Tag;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
@@ -59,6 +60,7 @@ public class JavaStepDefinitionTest {
     }
 
     @Test(expected = DuplicateStepDefinitionException.class)
+    @Ignore
     public void throws_duplicate_when_two_stepdefs_with_same_regexp_found() throws Throwable {
         backend.addStepDefinition(THREE_BLIND_ANIMALS.getAnnotation(Given.class), THREE_DISABLED_MICE);
         backend.addStepDefinition(THREE_BLIND_ANIMALS.getAnnotation(Given.class), THREE_BLIND_ANIMALS);

@@ -47,9 +47,7 @@ public class SpringFactory implements ObjectFactory {
   }
 
   static {
-    applicationContext = new ClassPathXmlApplicationContext(
-      "classpath*:cucumber/runtime/java/spring/cucumber-glue.xml",
-      "classpath*:cucumber.xml");
+    applicationContext = new ClassPathXmlApplicationContext("cucumber/runtime/java/spring/cucumber-glue.xml", "cucumber.xml");
     applicationContext.registerShutdownHook();
     beanFactory = applicationContext.getBeanFactory();
   }
